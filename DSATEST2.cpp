@@ -34,11 +34,30 @@ class PrinterQueue
         count++;
         book* NewBook = new book(priority, fileName);
         if(Book == NULL){Book = NewBook; return;}
-
+        
          if(priority >= Book->pri)
-         {
+         { // add truowcs
              NewBook->next = Book;
              Book = NewBook;
+             return;
+         }
+         else
+         { 
+              
+            book* temp = Book;
+            book* pre = temp;
+            bool a =false;
+            while(priority <= temp->pri && temp->next)
+            {
+                pre =temp;
+                a = true;
+                temp = temp->next;
+            }
+            if(temp->pri == priority){temp->next = NewBook; return;}
+            pre->next = NewBook;
+            if(a==true)NewBook->next  = temp;
+
+            return;
          }
     }
 
@@ -58,9 +77,17 @@ class PrinterQueue
 //hello.pdf
 int main()
     {PrinterQueue* myPrinterQueue = new PrinterQueue();
+    
+    myPrinterQueue->addNewRequest(3, "goodbye.pdf");
+    myPrinterQueue->addNewRequest(2, "goodnight.pdf");
+    myPrinterQueue->addNewRequest(8, "feng.pdf");
+   
+    myPrinterQueue->addNewRequest(9, "phong.pdf");
     myPrinterQueue->addNewRequest(1, "hello.pdf");
-    //myPrinterQueue->addNewRequest(2, "goodbye.pdf");
-    //myPrinterQueue->addNewRequest(2, "goodnight.pdf");
+     myPrinterQueue->addNewRequest(8, "feng2.pdf");
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+    myPrinterQueue->print();
     myPrinterQueue->print();
     myPrinterQueue->print();
     myPrinterQueue->print();}

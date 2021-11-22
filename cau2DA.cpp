@@ -65,3 +65,20 @@ public:
         delete cur;
     }
 };
+int main()
+{
+    PrinterQueue* myPrinterQueue = new PrinterQueue();
+    myPrinterQueue->addNewRequest(1, "hello.pdf");
+    myPrinterQueue->addNewRequest(3, "goodbye.pdf");
+    myPrinterQueue->addNewRequest(2, "goodnight.pdf");
+    myPrinterQueue->addNewRequest(8, "feng.pdf");
+    myPrinterQueue->addNewRequest(8, "feng2.pdf");
+    myPrinterQueue->addNewRequest(9, "phong.pdf");
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+    myPrinterQueue->print();
+
+}
